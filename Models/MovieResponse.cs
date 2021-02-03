@@ -15,14 +15,18 @@ namespace HW3_413.Models
 
         [Required(ErrorMessage = "Please input a category.")]
         public string Category { get; set; }
+
         [Required]
         public int Year { get; set; }
+
         [Required(ErrorMessage = "Please input a director.")]
         public string Director { get; set; }
+
         [Required(ErrorMessage = "Please input a rating.")]
         public string Rating { get; set; }
         public bool Edited { get; set; }
         public string Lent { get; set; }
+
         [StringLength(25)]
         public string Notes { get; set; }
 

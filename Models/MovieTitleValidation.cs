@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
+//Validates the Independence Day controversy between Professor Hilton and his brother
 namespace HW3_413.Models
 {
     public class MovieTitleValidation : ValidationAttribute
