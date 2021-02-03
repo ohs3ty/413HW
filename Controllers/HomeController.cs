@@ -23,6 +23,33 @@ namespace HW3_413.Controllers
             return View();
         }
 
+        public IActionResult Podcasts()
+        {
+            return View();
+        }
+
+        [HttpGet("AddMovie")]
+        public IActionResult AddMovie()
+        {
+            return View();
+        }
+
+        [HttpPost("AddMovie")]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddMovie(MovieResponse movieResponse)
+        {
+            if (ModelState.IsValid)
+            {
+                TempStorage.AddApplication(movieResponse);
+                return View("MovieList", TempStorage.MovieResponses);
+            }
+            return View("AddMovie");
+        }
+        public IActionResult MovieList()
+        {
+            return View(TempStorage.MovieResponses);
+        }
+
         public IActionResult Privacy()
         {
             return View();

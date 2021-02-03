@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Add a Movie";
+    ViewBag.HeaderTitle = "Add a Movie to this Wonderful Collection";
+}
+
+@model HW3_413.Models.MovieResponse
+<form asp-action="AddMovie" method="post">
+
+    <div>
+        <span asp-validation-for="Title" class="text-danger"></span>
+        <br />
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" />
+    </div>
+
+    <div>
+        <span asp-validation-for="Category" class="text-danger"></span>
+        <br />
+        <label asp-for="Category"></label>
+        <input asp-for="Category" />
+    </div>
+
+    <div>
+        <span asp-validation-for="Year" class="text-danger"></span>
+        <br />
+        <label asp-for="Year"></label>
+        <input asp-for="Year" />
+    </div>
+
+    <div>
+        <span asp-validation-for="Director" class="text-danger"></span>
+        <br />
+        <label asp-for="Director"></label>
+        <input asp-for="Director" />
+    </div>
+
+    <span asp-validation-for="Rating" class="text-danger"></span>
+    <br />
+    <label asp-for="Rating"></label>
+    <div class="input-field col s12">
+        <select class="browser-default" asp-for="Rating">
+            <option disabled selected value="">Select an option</option>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+    </div>
+
+    <label asp-for="Edited"></label>
+    <div class="input-field col s12">
+        <select class="browser-default" asp-for="Edited">
+            <option disabled selected value="">Select an option</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="Lent">Lent To</label>
+        <input asp-for="Lent" />
+    </div>
+
+    <div>
+        <label asp-for="Notes"></label>
+        <input asp-for="Notes" />
+    </div>
+    <div class="center">
+        <button type="submit">Add Movie</button>
+    </div>
+</form>

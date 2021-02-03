@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Complete Movie List";
+    ViewData["HeaderTitle"] = "List of Movies";
+}
+
+@model IEnumerable<HW3_413.Models.MovieResponse>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Rating</th>
+                <th>Edited</th>
+                <th>Lent to</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (HW3_413.Models.MovieResponse x in Model)
+            {
+                <tr>
+                    <td>@x.Title</td>
+                    <td>@x.Category</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    @if (x.Edited is false)
+                    {
+                        <td></td>
+                    }
+                    else
+                    {
+                        <td>Yes</td>
+                    }
+                    <td>@x.Lent</td>
+                    <td>@x.Notes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
