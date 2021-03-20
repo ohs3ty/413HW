@@ -19,8 +19,8 @@ namespace HW3_413.Controllers
         }
 
         public IActionResult Index()
-        {
-            return View();
+        {   
+            return View("Index", new string[] { "one", "two", "three" });
         }
 
         public IActionResult Podcasts()
