@@ -12,10 +12,12 @@ namespace HW3_413.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private MovieListContext context { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MovieListContext con)
         {
             _logger = logger;
+            context = con;
         }
 
         public IActionResult Index()
@@ -40,14 +42,15 @@ namespace HW3_413.Controllers
         {
             if (ModelState.IsValid)
             {
-                TempStorage.AddApplication(movieResponse);
-                return View("MovieList", TempStorage.MovieResponses);
+                context.Responses.Add(movieResponse);
+                context.SaveChanges();
+                return View();
             }
             return View("AddMovie");
         }
         public IActionResult MovieList()
         {
-            return View(TempStorage.MovieResponses);
+            return View(context.Responses);
         }
 
         public IActionResult Privacy()
