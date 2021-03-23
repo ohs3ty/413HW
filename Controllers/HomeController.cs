@@ -30,6 +30,44 @@ namespace HW3_413.Controllers
             return View();
         }
 
+        [HttpGet("EditMovie")]
+        public IActionResult EditMovie(int movieId)
+        {
+            var dbResponse = from res in context.Responses
+                         where res.MovieID == movieId
+                         select res;
+
+            ViewBag.dbResponse = dbResponse.FirstOrDefault();
+            return View();
+        }
+
+        [HttpPost("EditMovie")]
+        public IActionResult EditMovie(MovieResponse movieResponse)
+        {
+            if (ModelState.IsValid)
+            {
+                //update
+                var updateQuery = (from res in context.Responses
+                                   where res.MovieID == movieResponse.MovieID
+                                   select res).FirstOrDefault();
+                updateQuery.Title = movieResponse.Title;
+                updateQuery.Category = movieResponse.Category;
+                updateQuery.Year = movieResponse.Year;
+                updateQuery.Director = movieResponse.Director;
+                updateQuery.Rating = movieResponse.Rating;
+                updateQuery.Edited = movieResponse.Edited;
+                updateQuery.Lent = movieResponse.Lent;
+                updateQuery.Notes = movieResponse.Notes;
+                
+                context.SaveChanges();
+                return View("MovieList", context.Responses);
+            } 
+
+            ViewBag.dbResponse = movieResponse;
+            ViewBag.error = "ERROR";
+            return View();
+        }
+
         [HttpGet("AddMovie")]
         public IActionResult AddMovie()
         {

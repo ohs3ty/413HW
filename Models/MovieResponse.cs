@@ -11,8 +11,8 @@ namespace HW3_413.Models
     {
         [Key]
         public int MovieID { get; set; }
-        [Required(ErrorMessage = "Please input a title.")]  
 
+        [Required(ErrorMessage = "Please input a title.")]  
         [MovieTitleValidation]
         public string Title { get; set; } 
 

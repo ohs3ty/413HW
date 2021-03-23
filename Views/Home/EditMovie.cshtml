@@ -2,41 +2,41 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewBag.Title = "Add a Movie";
-    ViewBag.HeaderTitle = "Add a Movie to this Wonderful Collection";
+    ViewBag.Title = "Edit Movie";
+    ViewBag.HeaderTitle = "Edit Movie";
 }
 
 @model HW3_413.Models.MovieResponse
 
 
-<form asp-action="AddMovie" method="post">
+<form asp-action="EditMovie" method="post">
 
     <div class="mb-3">
         <span asp-validation-for="Title" class="text-danger"></span>
         <br />
         <label class="col-form-label" asp-for="Title">Title</label>
-        <input class="form-control" asp-for="Title" />
+        <input class="form-control" asp-for="Title" value="@ViewBag.dbresponse.Title" />
     </div>
 
     <div class="mb-3">
         <span asp-validation-for="Category" class="text-danger"></span>
         <br />
         <label class="col-form-label" asp-for="Category"></label>
-        <input class="form-control" asp-for="Category" />
+        <input class="form-control" asp-for="Category" value="@ViewBag.dbresponse.Category" />
     </div>
 
     <div class="mb-3">
         <span asp-validation-for="Year" class="text-danger"></span>
         <br />
         <label class="col-form-label" asp-for="Year"></label>
-        <input class="form-control" asp-for="Year" />
+        <input class="form-control" asp-for="Year" value="@ViewBag.dbresponse.Year" />
     </div>
 
     <div class="mb-3">
         <span asp-validation-for="Director" class="text-danger"></span>
         <br />
         <label class="col-form-label" asp-for="Director"></label>
-        <input class="form-control" asp-for="Director" />
+        <input class="form-control" asp-for="Director" value="@ViewBag.dbresponse.Director" />
     </div>
 
     <span asp-validation-for="Rating" class="text-danger"></span>
@@ -51,27 +51,33 @@
             <option value="R">R</option>
         </select>
     </div>
+
     <br />
     <label class="col-form-label" asp-for="Edited"></label>
     <div class="input-field col s12">
         <select class="form-control" asp-for="Edited">
-            <option disabled selected value="">Select an option</option>
-            <option value="true">Yes</option>
+            <option disabled value="">Select an option</option>
+            <option selected value="true">Yes</option>
             <option value="false">No</option>
         </select>
     </div>
+
     <br />
     <div class="mb-3">
         <label class="col-form-label" asp-for="Lent">Lent To</label>
-        <input class="form-control" asp-for="Lent" />
+        <input class="form-control" asp-for="Lent" value="@ViewBag.dbresponse.Lent" />
     </div>
 
     <div class="mb-3">
         <label class="col-form-label" asp-for="Notes"></label>
-        <input class="form-control" asp-for="Notes" />
+        <input class="form-control" asp-for="Notes" value="@ViewBag.dbresponse.Notes" />
     </div>
+
+    <!-- Also send the id-->
+    <input type="hidden" asp-for="MovieID" value="@ViewBag.dbresponse.MovieID" />
     <div class="text-center mb-3">
-        <input type="submit" class="btn btn-primary" value="Add Movie">
+        <input type="submit" class="btn btn-primary" value="Edit Movie">
     </div>
     <br /><br />
 </form>
+

@@ -9,17 +9,18 @@
 @model IEnumerable<HW3_413.Models.MovieResponse>
 
 <div>
-    <table>
+    <table class="table">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Year</th>
-                <th>Director</th>
-                <th>Rating</th>
-                <th>Edited</th>
-                <th>Lent to</th>
-                <th>Notes</th>
+                <th scope="col">Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Year</th>
+                <th scope="col">Director</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Edited</th>
+                <th scope="col">Lent to</th>
+                <th scope="col">Notes</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -44,6 +45,12 @@
                     }
                     <td>@x.Lent</td>
                     <td>@x.Notes</td>
+                    <td>
+                        <form asp-action="EditMovie" method="get">
+                            <input type="hidden" id="MovieID" name="MovieID" value="@x.MovieID" />
+                            <input type="submit" class="btn-primary btn" asp-controller="Home" asp-action="EditMovie" value="Edit" />
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>
