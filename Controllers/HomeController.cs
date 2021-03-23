@@ -40,13 +40,14 @@ namespace HW3_413.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddMovie(MovieResponse movieResponse)
         {
+            //access the database
             if (ModelState.IsValid)
             {
                 context.Responses.Add(movieResponse);
                 context.SaveChanges();
-                return View();
+                return View("MovieList", context.Responses);
             }
-            return View("AddMovie");
+            return View();
         }
         public IActionResult MovieList()
         {
