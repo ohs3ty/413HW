@@ -48,8 +48,12 @@
                     <td>
                         <form asp-action="EditMovie" method="get">
                             <input type="hidden" id="MovieID" name="MovieID" value="@x.MovieID" />
-                            <input type="submit" class="btn-primary btn" asp-controller="Home" asp-action="EditMovie" value="Edit" />
+                            <input type="submit" style="width: 100%; margin-bottom: 2px;" class="btn-primary btn btn-sm" asp-controller="Home" asp-action="EditMovie" value="Edit" />
                         </form>
+                        <form asp-action="DeleteMovie" method="post">
+                            <input type="hidden" id="MovieID" name="MovieID" value="@x.MovieID" />
+                            <input type="submit" style="width: 100%;" class="btn btn-danger btn-sm" asp-action="DeleteMovie" value="Delete"/>
+                        </form> 
                     </td>
                 </tr>
             }

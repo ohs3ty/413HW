@@ -36,8 +36,14 @@ namespace HW3_413.Controllers
             var dbResponse = from res in context.Responses
                          where res.MovieID == movieId
                          select res;
+            List<string> ratingArr = new List<string>
+            {
+                "G", "PG", "PG-13", "R",
+            };
+            //so that I can select the right rating
 
             ViewBag.dbResponse = dbResponse.FirstOrDefault();
+            ViewBag.ratingArr = ratingArr;
             return View();
         }
 
@@ -66,6 +72,18 @@ namespace HW3_413.Controllers
             ViewBag.dbResponse = movieResponse;
             ViewBag.error = "ERROR";
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteMovie(int movieId)
+        {
+            var deleteQuery = (from res in context.Responses
+                               where res.MovieID == movieId
+                               select res).FirstOrDefault();
+            context.Responses.Remove(deleteQuery);
+            context.SaveChanges();
+
+            return View("MovieList", context.Responses);
         }
 
         [HttpGet("AddMovie")]
