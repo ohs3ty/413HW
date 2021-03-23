@@ -12,6 +12,7 @@ namespace HW3_413.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        //change to database
         private MovieListContext context { get; set; }
 
         public HomeController(ILogger<HomeController> logger, MovieListContext con)
@@ -75,11 +76,13 @@ namespace HW3_413.Controllers
         }
 
         [HttpPost]
+        //delete
         public IActionResult DeleteMovie(int movieId)
         {
             var deleteQuery = (from res in context.Responses
                                where res.MovieID == movieId
                                select res).FirstOrDefault();
+            
             context.Responses.Remove(deleteQuery);
             context.SaveChanges();
 
