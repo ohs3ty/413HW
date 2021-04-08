@@ -36,7 +36,7 @@
         <span asp-validation-for="Director" class="text-danger"></span>
         <br />
         <label class="col-form-label" asp-for="Director"></label>
-        <input class="form-control" asp-for="Director" value="@ViewBag.dbResponse.Director" />
+        <input class="form-control" asp-for="Director" value="@ViewBag.dbResponse.Director.ToString('d')" />
     </div>
 
     <span asp-validation-for="Rating" class="text-danger"></span>
